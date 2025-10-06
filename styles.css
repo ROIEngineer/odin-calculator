@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
 }
 
 body {
@@ -11,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Helvetica;
 }
 
 .container {
@@ -25,17 +24,31 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.calc {
+  display: grid;
+}
+
 /* Title */
 h1 {
   margin-bottom: 25px;
 }
 
-/* Number Buttons */
-.numbers > button  {
-  font-size: 36px;
-  padding: 10px;
+/* Buttons */
+button  {
+  font-size: 1.5rem;
+  padding: 16px 20px;
   border: none;
+  border-radius: 50%;
   color: white;
+}
+
+/* Numbers */
+.numbers > button {
+  background: #505050;
+}
+
+/* Operators */
+.operators > button { 
   background: #FF9500;
 }
 
