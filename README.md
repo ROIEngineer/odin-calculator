@@ -158,12 +158,3 @@ Feel free to open issues or submit PRs. Keep changes small and focused (e.g., on
 This project is provided for learning/demo purposes. Use and modify freely — adding an explicit license (e.g., MIT) is recommended if you plan to publish widely.
 
 ---
-
-If you’d like, I can:
-
-* generate an `MIT` license file,
-
-* add example unit tests for `script.js`, or
-
-* create a short CONTRIBUTING.md to guide collaborators. Which one would you like next?
-
