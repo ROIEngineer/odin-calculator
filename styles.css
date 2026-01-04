@@ -1,94 +1,180 @@
-*,*::before,*::after {
+/* styles.css - Modern Calculator Styling */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 20px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 90%;
-  width: 500px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Title */
-h1 {
-  margin-bottom: 25px;
-}
-
-/* calculator */
-.calculator {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  margin: 0 auto;
-  max-width: 420px;
   width: 100%;
-  gap: 12px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-/* display */
+.title {
+  color: #fff;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+  border-radius: 2px;
+}
+
+.calculator {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .display {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #fff;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 2rem;
-  color: #fff;
-  background: #111;
-  padding: 16px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  text-align: right;
-  min-height: 56px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
-/* keys grid */
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 15px;
 }
 
 .btn {
-  font-size: 1.25rem;
-  padding: 18px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  height: 70px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* type styles */
-.btn.num {background: #333; color: #fff;}
-.btn.op {background: #ff9500; color: #fff;}
-.btn.eq {background: #007bff; color: #fff;}
-
-/* make zero span two columns */
-.btn.zero {
-  grid-column: span 2; /* zero takes space of 2 columns */
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* accessibility: visible focus */
-.btn:focus {
-  outline: 3px solid #86b7ff;
-  outline-offset: 2px;
+.num {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* responsive: smaller buttons on narrow screens */
-@media (max-width: 360px) {
-  .btn { padding: 12px 8px; font-size: 1rem; }
+.num:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.op {
+  background: linear-gradient(135deg, #00dbde 0%, #fc00ff 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.op:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn[data-op="clear"] {
+  background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+}
+
+.btn[data-op="="] {
+  background: linear-gradient(135deg, #00dbde 0%, #0093e9 100%);
+  grid-column: span 2;
+}
+
+.btn[data-num="0"] {
+  grid-column: span 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    max-width: 350px;
+    gap: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .display {
+    font-size: 2.2rem;
+    min-height: 80px;
+    padding: 15px;
+  }
+  
+  .btn {
+    height: 60px;
+    font-size: 1.3rem;
+  }
+  
+  .calculator {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .container {
+    max-width: 300px;
+  }
+  
+  .display {
+    font-size: 1.8rem;
+    min-height: 70px;
+  }
+  
+  .btn {
+    height: 55px;
+    font-size: 1.2rem;
+  }
 }
